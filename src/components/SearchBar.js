@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import { Searchbar } from 'react-native-paper';
+import styled from 'styled-components/native';
+
+const Container = styled.View`
+  padding: 10px;
+`;
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -10,20 +14,14 @@ const SearchBar = () => {
   };
 
   return (
-    <View style={styles.searchContainer}>
+    <Container>
       <Searchbar
         placeholder="Seach"
         value={searchQuery}
         onChangeText={searchQueryhandler}
       />
-    </View>
+    </Container>
   );
 };
 
 export default SearchBar;
-
-const styles = StyleSheet.create({
-  searchContainer: {
-    padding: 10,
-  },
-});
