@@ -4,22 +4,32 @@ import { Card } from 'react-native-paper';
 import styled from 'styled-components/native';
 
 const Container = styled.View`
-  background-color: blue;
   flex: 1;
-  padding: 10px;
+  padding: ${(props) => props.theme.space[3]};
 `;
 
 const CardContainer = styled(Card)`
-  background-color: white;
+  background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
 const Cover = styled(Card.Cover)`
-  padding: 20px;
-  background-color: white;
+  padding: ${(props) => props.theme.space[3]};
+  background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
 const Title = styled.Text`
-  padding: 10px 20px;
+  font-size: ${(props) => props.theme.fontSizes.body};
+  color: ${(props) => props.theme.colors.ui.primary};
+  font-family: ${(props) => props.theme.fonts.heading};
+`;
+
+const Info = styled.View`
+  padding: ${(props) => props.theme.space[3]};
+`;
+
+const Address = styled.Text`
+  font-family: ${(props) => props.theme.fonts.body};
+  font-size: ${(props) => props.theme.fontSizes.body};
 `;
 
 const RestaurentInfo = ({ restaurant = {} }) => {
@@ -39,7 +49,10 @@ const RestaurentInfo = ({ restaurant = {} }) => {
     <Container>
       <CardContainer elevation={5}>
         <Cover key={name} source={{ uri: photos[0] }} />
-        <Title>{name}</Title>
+        <Info>
+          <Title>{name}</Title>
+          <Address>{address}</Address>
+        </Info>
       </CardContainer>
     </Container>
   );

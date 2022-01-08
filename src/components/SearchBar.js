@@ -3,7 +3,7 @@ import { Searchbar } from 'react-native-paper';
 import styled from 'styled-components/native';
 
 const Container = styled.View`
-  padding: 10px;
+  padding: ${(props) => props.theme.space[3]};
 `;
 
 const SearchBar = () => {
