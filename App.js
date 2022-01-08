@@ -7,26 +7,13 @@ import {
   Text,
   View,
 } from 'react-native';
-import ResturantsList from './src/components/ResturantsList';
-import SearchBar from './src/components/SearchBar';
-
-const isAndroid = Platform.OS === 'android' ? StatusBar.currentHeight : 0;
+import RestaurantsScreen from './src/features/restaurants/screens/Restaurants.screen';
 
 export default function App() {
   return (
     <>
-      <SafeAreaView style={styles.container}>
-        <SearchBar />
-        <ResturantsList />
-      </SafeAreaView>
+      <RestaurantsScreen />
       <ExpoStatusBar style="auto" />
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: isAndroid,
-  },
-});
