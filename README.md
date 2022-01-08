@@ -3,5 +3,3 @@
 `By Fani`
 
 - The app if from the Udemy course for react native with Andrei
-
-## Features ::
