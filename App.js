@@ -13,8 +13,30 @@ import { NavigationContainer } from '@react-navigation/native';
 import SettingScreen from './src/features/restaurants/screens/Setting.screen';
 import MapScreen from './src/features/restaurants/screens/Map.screen';
 import { Ionicons } from '@expo/vector-icons';
+import { restaurantsRequest } from './src/services/restaurants/restaurant-service';
 
 const Tabs = createBottomTabNavigator();
+
+const TAB_ICON = {
+  Restaurants: 'md-restaurant',
+  Maps: 'md-map',
+  Settings: 'md-settings',
+};
+
+const tabBarIcon =
+  (iconName) =>
+  ({ size, color }) =>
+    <Ionicons name={iconName} size={size} color={color} />;
+
+const screenOptions = ({ route }) => {
+  const icon = TAB_ICON[route.name];
+  return {
+    tabBarIcon: tabBarIcon(icon),
+    headerShown: false,
+    tabBarActiveTintColor: 'tomato',
+    tabBarInActiveTintColor: 'gray',
+  };
+};
 
 export default function App() {
   let [oswaldLoaded] = useOswald({
@@ -32,31 +54,7 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         <NavigationContainer>
-          <Tabs.Navigator
-            screenOptions={({ route }) => ({
-              headerShown: false,
-              tabBarIcon: ({ focused, color, size }) => {
-                switch (route.name) {
-                  case 'Restaurants':
-                    return (
-                      <Ionicons
-                        name="md-restaurant"
-                        size={size}
-                        color={color}
-                      />
-                    );
-                  case 'Settings':
-                    return (
-                      <Ionicons name="md-settings" size={size} color={color} />
-                    );
-                  case 'Maps':
-                    return <Ionicons name="md-map" size={size} color={color} />;
-                }
-              },
-              tabBarActiveTintColor: 'tomato',
-              tabBarInactiveTintColor: 'gray',
-            })}
-          >
+          <Tabs.Navigator screenOptions={screenOptions}>
             <Tabs.Screen name="Restaurants" component={RestaurantsScreen} />
             <Tabs.Screen name="Maps" component={MapScreen} />
             <Tabs.Screen name="Settings" component={SettingScreen} />
