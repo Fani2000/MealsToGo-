@@ -85,9 +85,9 @@ const RestaurentInfo = ({ restaurant = {} }) => {
                   CLOSED TEMPORARILY
                 </Text>
               )}
-              <Spacer variant="left.Medium" />
+              <Spacer position="left" size="medium" />
               {isOpenNow && <SvgXml xml={open} height={20} width={20} />}
-              <Spacer variant="left.Large" />
+              <Spacer position="left" size="medium" />
               <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
             </SectionEnd>
           </Section>
