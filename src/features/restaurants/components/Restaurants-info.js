@@ -1,10 +1,11 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
 import { Card } from 'react-native-paper';
 import styled from 'styled-components/native';
 import { SvgXml } from 'react-native-svg';
 import star from '../../../../assets/star';
 import open from '../../../../assets/open';
+import Spacer from '../../../components/Spacer-component';
 
 const Container = styled.View`
   flex: 1;
@@ -54,14 +55,14 @@ const SectionEnd = styled.View`
 const RestaurentInfo = ({ restaurant = {} }) => {
   const {
     name = 'Some Restaurant',
-    icon,
+    icon = 'https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png',
     photos = [
       'https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-684x1024.jpg.webp',
     ],
     address = '100 some random street',
     isOpenNow = true,
     rating = 4,
-    isClosedTemporarily,
+    isClosedTemporarily = true,
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
@@ -74,12 +75,20 @@ const RestaurentInfo = ({ restaurant = {} }) => {
           <Title>{name}</Title>
           <Section>
             <Rating>
-              {ratingArray.map(() => (
-                <SvgXml xml={star} height={20} width={20} />
+              {ratingArray.map((el, i) => (
+                <SvgXml key={i} xml={star} height={20} width={20} />
               ))}
             </Rating>
             <SectionEnd>
+              {isClosedTemporarily && (
+                <Text variant="label" style={{ color: 'red' }}>
+                  CLOSED TEMPORARILY
+                </Text>
+              )}
+              <Spacer variant="left.Medium" />
               {isOpenNow && <SvgXml xml={open} height={20} width={20} />}
+              <Spacer variant="left.Large" />
+              <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
             </SectionEnd>
           </Section>
           <Address>{address}</Address>
