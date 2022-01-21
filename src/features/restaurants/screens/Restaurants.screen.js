@@ -11,17 +11,18 @@ const SearchContainer = styled.View`
 `;
 
 export default function RestaurantsScreen() {
-  const restaurantsContext = React.useContext(RestaurantsContext);
-  const DATA = restaurantsContext.restaurants;
+  const { restaurants, isLoading, error } =
+    React.useContext(RestaurantsContext);
+
   return (
     <SafeAreaViewContainer>
       <SearchContainer>
         <SearchBar />
       </SearchContainer>
       <FlatList
-        data={DATA}
-        renderItem={() => <RestaurentInfo />}
-        keyExtractor={(item) => item.id}
+        data={restaurants}
+        renderItem={({ item }) => <RestaurentInfo restaurant={item} />}
+        keyExtractor={(item) => item.name}
         contentContainerStyle={{ padding: 4 }}
       />
     </SafeAreaViewContainer>
