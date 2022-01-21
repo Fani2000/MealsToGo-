@@ -1,14 +1,15 @@
 import * as React from 'react';
 import { FlatList, View } from 'react-native';
-import SearchBar from '../../../components/SearchBar';
 import RestaurentInfo from '../components/Restaurants-info';
-import styled from 'styled-components/native';
 import { SafeAreaViewContainer } from '../../../components/Safe-area-component.js/safe-area-component';
 import { RestaurantsContext } from '../../../services/restaurants/restaurant-context';
 import { ActivityIndicator, Colors } from 'react-native-paper';
+import Search from '../components/search-component';
+import styled from 'styled-components/native';
 
-const SearchContainer = styled.View`
-  padding: ${(props) => props.theme.space[3]} ${(props) => props.theme.space[2]};
+const LoadingContainer = styled.View`
+  flex: 1;
+  justify-content: center;
 `;
 
 export default function RestaurantsScreen() {
@@ -17,18 +18,16 @@ export default function RestaurantsScreen() {
 
   return (
     <SafeAreaViewContainer>
-      <SearchContainer>
-        <SearchBar />
-      </SearchContainer>
+      <Search />
       {isLoading && (
-        <View style={{ flex: 1, justifyContent: 'center' }}>
+        <LoadingContainer>
           <ActivityIndicator
             size={50}
             style={{ marginLeft: -25 }}
             color={Colors.red300}
             animating={true}
           />
-        </View>
+        </LoadingContainer>
       )}
       {!isLoading && (
         <FlatList
