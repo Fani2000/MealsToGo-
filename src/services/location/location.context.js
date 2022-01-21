@@ -23,7 +23,6 @@ export const LocationProvider = ({ children }) => {
       .then((result) => {
         setLoacation(result);
         setIsLoading(false);
-        console.log(result);
       })
       .catch((e) => {
         setIsLoading(false);
