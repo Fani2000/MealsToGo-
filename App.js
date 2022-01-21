@@ -13,7 +13,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import SettingScreen from './src/features/restaurants/screens/Setting.screen';
 import MapScreen from './src/features/restaurants/screens/Map.screen';
 import { Ionicons } from '@expo/vector-icons';
-import { restaurantsRequest } from './src/services/restaurants/restaurant-service';
 
 const Tabs = createBottomTabNavigator();
 
