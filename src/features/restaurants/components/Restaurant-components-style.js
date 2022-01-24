@@ -9,6 +9,7 @@ export const Container = styled.View`
 
 export const CardContainer = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
+  margin-top: ${(props) => props.theme.space[3]};
 `;
 
 export const Cover = styled(Card.Cover)`
