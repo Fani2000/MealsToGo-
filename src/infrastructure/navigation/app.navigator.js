@@ -36,6 +36,7 @@ const AppNavigator = () => {
       <Tabs.Navigator screenOptions={screenOptions}>
         <Tabs.Screen
           name="RestaurantsNavigator"
+          options={{ title: 'Restaurants' }}
           component={RestaurantNavigator}
         />
         <Tabs.Screen name="Maps" component={MapScreen} />

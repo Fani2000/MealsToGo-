@@ -40,3 +40,8 @@ export const Icon = styled.Image`
   width: 15px;
   height: 15px;
 `;
+
+export const Address = styled.Text`
+  font-family: ${(props) => props.theme.fonts.body};
+  font-size: ${(props) => props.theme.fontSizes.caption};
+`;

@@ -5,6 +5,7 @@ import open from '../../../../assets/open';
 import Spacer from '../../../components/spacer/Spacer-component';
 import { Text } from '../../../components/typography/text-component';
 import {
+  Address,
   CardContainer,
   Container,
   Cover,
@@ -32,36 +33,34 @@ const RestaurentInfo = ({ restaurant = {} }) => {
   const ratingArray = Array.from(new Array(Math.floor(rating)));
 
   return (
-    <Container>
-      <CardContainer elevation={5}>
-        <Cover key={name} source={{ uri: photos[0] }} />
-        <Info>
-          <Text variant="title">{name}</Text>
-          <Section>
-            <Rating>
-              {ratingArray.map((_, i) => (
-                <SvgXml
-                  key={`star-${placeId}-${i}`}
-                  xml={star}
-                  height={20}
-                  width={20}
-                />
-              ))}
-            </Rating>
-            <SectionEnd>
-              {isClosedTemporarily && (
-                <Text variant="error">CLOSED TEMPORARILY</Text>
-              )}
-              <Spacer position="left" size="medium" />
-              {isOpenNow && <SvgXml xml={open} height={20} width={20} />}
-              <Spacer position="left" size="medium" />
-              <Icon source={{ uri: icon }} />
-            </SectionEnd>
-          </Section>
-          <Text variant="label">{address}</Text>
-        </Info>
-      </CardContainer>
-    </Container>
+    <CardContainer elevation={5}>
+      <Cover key={name} source={{ uri: photos[0] }} />
+      <Info>
+        <Text variant="title">{name}</Text>
+        <Section>
+          <Rating>
+            {ratingArray.map((_, i) => (
+              <SvgXml
+                key={`star-${placeId}-${i}`}
+                xml={star}
+                height={20}
+                width={20}
+              />
+            ))}
+          </Rating>
+          <SectionEnd>
+            {isClosedTemporarily && (
+              <Text variant="error">CLOSED TEMPORARILY</Text>
+            )}
+            <Spacer position="left" size="medium" />
+            {isOpenNow && <SvgXml xml={open} height={20} width={20} />}
+            <Spacer position="left" size="medium" />
+            <Icon source={{ uri: icon }} />
+          </SectionEnd>
+        </Section>
+        <Address>{address}</Address>
+      </Info>
+    </CardContainer>
   );
 };
 
