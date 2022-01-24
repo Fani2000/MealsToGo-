@@ -17,7 +17,7 @@ const MapScreen = () => {
   const { location } = useContext(LocationContext);
   const [latDelta, setLatDelta] = useState(0);
 
-  const { viewport } = location;
+  const { viewport, lat, lng } = location;
 
   useEffect(() => {
     const northeastLat = viewport.northeast.lat;
@@ -30,9 +30,25 @@ const MapScreen = () => {
   return (
     <SafeAreaViewContainer>
       <Search />
-      <Map>
+      <Map
+        region={{
+          latitude: lat,
+          longitude: lng,
+          latitudeDelta: latDelta,
+          longitudeDelta: 0.02,
+        }}
+      >
         {restaurants.map((restaurant) => {
-          return <Marker key={restaurant.id}></Marker>;
+          return (
+            <Marker
+              key={restaurant.name}
+              title={restaurant.name}
+              coordinate={{
+                latitude: restaurant.geometry.location.lat,
+                longitude: restaurant.geometry.location.lng,
+              }}
+            ></Marker>
+          );
         })}
       </Map>
     </SafeAreaViewContainer>
