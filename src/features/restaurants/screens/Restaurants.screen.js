@@ -8,6 +8,7 @@ import Search from '../components/search-component';
 import styled from 'styled-components/native';
 import { useNavigation } from '@react-navigation/native';
 import FavouritesBar from '../../../components/favourites/favourites-bar-components';
+import { FavouritesContext } from '../../../services/favourites/favourites.context';
 
 const LoadingContainer = styled.View`
   flex: 1;
@@ -17,6 +18,7 @@ const LoadingContainer = styled.View`
 export default function RestaurantsScreen() {
   const navigate = useNavigation();
   const { restaurants, isLoading, error } = useContext(RestaurantsContext);
+  const { favourites } = useContext(FavouritesContext);
   const [isToggled, setIsToggled] = useState(false);
 
   const handleRestaurantsDetails = (item) => {
@@ -29,7 +31,7 @@ export default function RestaurantsScreen() {
         isFavouritesToggle={isToggled}
         onFavouritesToggled={() => setIsToggled(!isToggled)}
       />
-      {isToggled && <FavouritesBar />}
+      {isToggled && <FavouritesBar favourites={favourites} />}
       {isLoading && (
         <LoadingContainer>
           <ActivityIndicator
