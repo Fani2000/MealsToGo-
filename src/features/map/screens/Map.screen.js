@@ -1,5 +1,5 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useContext, useEffect, useState } from 'react';
-import { View, Text } from 'react-native';
 import MapView, { Callout, Marker } from 'react-native-maps';
 import styled from 'styled-components';
 import { SafeAreaViewContainer } from '../../../components/Safe-area-component/safe-area-component';
@@ -14,6 +14,7 @@ const Map = styled(MapView)`
 `;
 
 const MapScreen = () => {
+  const navigation = useNavigation();
   const { restaurants = [] } = useContext(RestaurantsContext);
   const { location } = useContext(LocationContext);
   const [latDelta, setLatDelta] = useState(0);
@@ -49,7 +50,13 @@ const MapScreen = () => {
                 longitude: restaurant.geometry.location.lng,
               }}
             >
-              <Callout>
+              <Callout
+                onPress={() => {
+                  navigation.navigate('RestaurantsDetails', {
+                    restaurant,
+                  });
+                }}
+              >
                 <MapCallout restaurant={restaurant} />
               </Callout>
             </Marker>
