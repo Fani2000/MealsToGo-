@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { FlatList, View } from 'react-native';
-import RestaurentInfo from '../components/Restaurants-info';
-import { SafeAreaViewContainer } from '../../../components/Safe-area-component.js/safe-area-component';
-import { RestaurantsContext } from '../../../services/restaurants/restaurant-context';
+import RestaurentInfo from '../restaurants/components/Restaurants-info';
+import { SafeAreaViewContainer } from '../../components/Safe-area-component/safe-area-component';
+import { RestaurantsContext } from '../../services/restaurants/restaurant-context';
 import { ActivityIndicator, Colors } from 'react-native-paper';
-import Search from '../components/search-component';
+import Search from '../restaurants/components/search-component';
 import styled from 'styled-components/native';
 
 const LoadingContainer = styled.View`
