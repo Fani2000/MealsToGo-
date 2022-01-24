@@ -3,9 +3,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
-import MapScreen from '../../features/screens/Map.screen';
-import SettingScreen from '../../features/screens/Setting.screen';
+import MapScreen from '../../features/map/screens/Map.screen';
 import RestaurantNavigator from './restaurants.navigator';
+import SettingScreen from '../../features/settings/screens/Setting.screen';
 
 const Tabs = createBottomTabNavigator();
 

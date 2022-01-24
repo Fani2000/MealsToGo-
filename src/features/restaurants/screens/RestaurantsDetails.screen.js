@@ -1,7 +1,7 @@
 import { View, ScrollView } from 'react-native';
 import React, { useState } from 'react';
 import { useRoute } from '@react-navigation/native';
-import RestaurentInfo from '../restaurants/components/Restaurants-info';
+import RestaurentInfo from '../components/Restaurants-info';
 import { List } from 'react-native-paper';
 
 const RestaurantsDetailsScreen = () => {
