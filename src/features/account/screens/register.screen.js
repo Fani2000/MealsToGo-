@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { ActivityIndicator, Colors } from 'react-native-paper';
 import {
   AccountBackground,
   AuthButton,
@@ -14,7 +15,7 @@ const RegisterScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const { onRegister, error } = useContext(AuthenticationContext);
+  const { onRegister, error, isLoading } = useContext(AuthenticationContext);
   const navigator = useNavigation();
 
   return (
@@ -56,13 +57,17 @@ const RegisterScreen = () => {
           </Spacer>
         )}
         <Spacer size="large">
-          <AuthButton
-            onPress={() => onRegister(email, password, confirmPassword)}
-            icon="email"
-            mode="contained"
-          >
-            Register
-          </AuthButton>
+          {!isLoading ? (
+            <AuthButton
+              onPress={() => onRegister(email, password, confirmPassword)}
+              icon="email"
+              mode="contained"
+            >
+              Register
+            </AuthButton>
+          ) : (
+            <ActivityIndicator animating={true} color={Colors.blue300} />
+          )}
         </Spacer>
         <Spacer size="large">
           <AuthButton
