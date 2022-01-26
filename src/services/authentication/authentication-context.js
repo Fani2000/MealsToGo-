@@ -18,8 +18,9 @@ export const AuthenticationProvider = ({ children }) => {
       setIsAuthenticated(true);
       setIsLoading(false);
     } catch (e) {
-      setError(e);
+      setError(e.message);
       setIsLoading(false);
+      setIsAuthenticated(false);
     }
   };
 
