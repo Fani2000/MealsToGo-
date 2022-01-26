@@ -8,11 +8,13 @@ import {
 import { Text } from '../../../components/typography/text-component';
 import Spacer from '../../../components/spacer/Spacer-component';
 import { AuthenticationContext } from '../../../services/authentication/authentication-context';
+import { useNavigation } from '@react-navigation/native';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { onLogin, error } = useContext(AuthenticationContext);
+  const navigator = useNavigation();
 
   return (
     <AccountBackground>
@@ -49,6 +51,15 @@ const LoginScreen = () => {
             mode="contained"
           >
             Login
+          </AuthButton>
+        </Spacer>
+        <Spacer size="large">
+          <AuthButton
+            onPress={() => navigator.navigate('Main')}
+            icon="arrow-left"
+            mode="contained"
+          >
+            Back
           </AuthButton>
         </Spacer>
       </AuthContainer>
